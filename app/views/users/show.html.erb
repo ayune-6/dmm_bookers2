@@ -1,12 +1,24 @@
-<% @books.each do |book| %>
-<div>
-  <p>＠<%= @book.user.username %></p>
-  <%= link_to book_path(book.id) do %>
-    <p>title : <%= book.title %></p>
-  <% end %>
-  <p>body : <%= book.body %></p>
+<div class="user-info">
+  <h4>User info</h4>
+  <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+  <p>name : <%= @user.username %></p>
+  <p>introduction : <%= @user.introduction %></p>
 </div>
-<% end %>
+
+<div class="books-info"></div>
+  <h4>Books</h4>
+  <% @books.each do |book| %>
+  <div>
+    <p>＠<%= book.user.username %></p>
+    <%= link_to book_path(book.id) do %>
+      <p>title : <%= book.title %></p>
+    <% end %>
+    <p>body : <%= book.body %></p>
+  </div>
+  <% end %>
+</div>
+
+
 <%= paginate @books %>
 
 
