@@ -10,6 +10,20 @@ class BooksController < ApplicationController
     redirect_to books_path
   end
 
+  def index
+    @books = Book.page(params[:page]).reverse_order
+  end
+
+  def show
+    @book = Book.find(params[:id])
+  end
+
+  def destroy
+    @book = Book.find(params[:id])
+    @book.destroy
+    redirect_to books_path
+  end
+
   private
     def book_params
       params.require(:book).permit(:title, :body)
