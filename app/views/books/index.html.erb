@@ -1,6 +1,7 @@
+<%= render '/userinfoandnewbook', newbook: @newbook, login_user: @login_user %>
+
 <% @books.each do |book| %>
 <div>
-  <p>＠<%= book.user.username %></p>
   <%= link_to book_path(book.id) do %>
     <p>title : <%= book.title %></p>
   <% end %>

@@ -1,6 +1,16 @@
+<%= render '/userinfoandnewbook', newbook: @newbook, login_user: @login_user %>
+<div class="flash-message">
+    <% flash.each do |message_type, message| %>
+      <%= message %>
+    <% end %>
+</div>
 <div class="post-body">
-  <p>＠<%= @book.user.username %></p>
-  <p>title: <%= @book.title %></p>
+  <%= link_to user_path(@book.user.id) do %>
+    <p>name : <%= @book.user.name %></p>
+  <% end %>
+  <%= link_to book_path(@book.id) do %>
+    <p>title : <%= @book.title %></p>
+  <% end %>
   <p>body: <%= @book.body %></p>
   <p><%= @book.created_at.strftime('%Y/%m/%d') %></p>
 

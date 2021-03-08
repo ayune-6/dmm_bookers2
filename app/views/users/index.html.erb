@@ -1,16 +1,10 @@
-<div class="user-info">
-  <h2>User info</h2>
-  <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
-  <p>name : <%= @user.username %></p>
-  <p>introduction : <%= @user.introduction %></p>
-</div>
-
-<div class="users-info">
+<%= render '/userinfoandnewbook', newbook: @newbook, login_user: @login_user %>
+<div class="users">
   <h2>Users</h2>
   <% @users.each do |user| %>
   <div>
     <%= attachment_image_tag user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %>
-    <p>＠<%= user.username %></p>
+    <p>＠<%= user.name %></p>
     <%= link_to user_path(user.id) do %>
     <p>Show</p>
     <% end %>
