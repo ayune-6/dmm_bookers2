@@ -1,4 +1,6 @@
-<%= render '/userinfoandnewbook', newbook: @newbook, login_user: @login_user %>
+<%= render '/userinfo', login_user: @login_user %>
+<%= render '/newbook', newbook: @newbook %>
+
 <div class="users">
   <h2>Users</h2>
   <% @users.each do |user| %>

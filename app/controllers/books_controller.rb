@@ -7,8 +7,9 @@ class BooksController < ApplicationController
       flash[:success] = 'The book was successfully posted!'
       redirect_to book_path(@book.id)
     else
-      @books = Book.all
-      render 'index'
+      @books = Book.page(params[:page]).reverse_order
+      flash[:error] = @book.errors.full_messages
+      redirect_to books_path
     end
   end
 
@@ -22,6 +23,21 @@ class BooksController < ApplicationController
     @newbook = Book.new
     @login_user = User.find_by(id:current_user.id)
     @book = Book.find(params[:id])
+  end
+
+  def edit
+    @book = Book.find(params[:id])
+  end
+
+  def update
+    @book = Book.find(params[:id])
+    if @book.update(book_params)
+      flash[:success] = 'The book was successfully updated!'
+      redirect_to book_path(@book)
+    else
+      flash[:error] = @book.errors.full_messages
+      render 'edit'
+    end
   end
 
   def destroy

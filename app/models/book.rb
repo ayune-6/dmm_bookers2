@@ -1,5 +1,5 @@
 class Book < ApplicationRecord
   belongs_to :user
-    # validate :title, presence: true
-    # validate :body, presence: true, length: { maximum: 200 }
+    validates :title, presence: true
+    validates :body, length: { in: 1..200 }
 end

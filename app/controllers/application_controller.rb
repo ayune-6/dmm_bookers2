@@ -8,9 +8,9 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_up_path_for(resource)
+    flash[:success] = 'Signed up successfully.'
     user_path(resource)
   end
-
 
 
   protected

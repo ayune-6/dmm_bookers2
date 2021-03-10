@@ -1,9 +1,21 @@
-<%= render '/userinfoandnewbook', newbook: @newbook, login_user: @login_user %>
-<div class="flash-message">
-    <% flash.each do |message_type, message| %>
-      <%= message %>
-    <% end %>
-</div>
+<% if flash[:notice] || flash[:success] %>
+  <% flash.each do |message_type, message| %>
+    <%= message %>
+  <% end %>
+<% elsif flash[:error] %>
+  <div id="error-explanation">
+    <p><%= pluralize(flash[:error].count, "error") %> prohibited this book from being saved:</p>
+    <ul>
+      <% flash[:error].each do |e| %>
+      <li><%= e %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= render '/userinfo', login_user: @login_user %>
+<%= render '/newbook', newbook: @newbook %>
+
 <div class="post-body">
   <%= link_to user_path(@book.user.id) do %>
     <p>name : <%= @book.user.name %></p>
@@ -15,6 +27,7 @@
   <p><%= @book.created_at.strftime('%Y/%m/%d') %></p>
 
   <% if @book.user.id == current_user.id %>
-    <%= link_to "delete", book_path(@book.id), method: :delete %>
+    <%= link_to "delete", book_path(@book.id), method: :delete, "data-confirm" => "Are you sure?"%>
+    <%= link_to "Edit", edit_book_path(@book.id) %>
   <% end %>
 </div>

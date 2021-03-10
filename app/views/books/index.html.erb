@@ -1,4 +1,16 @@
-<%= render '/userinfoandnewbook', newbook: @newbook, login_user: @login_user %>
+<% if flash[:error] %>
+  <div id="error-explanation">
+    <p><%= pluralize(flash[:error].count, "error") %> prohibited this book from being saved:</p>
+    <ul>
+      <% flash[:error].each do |e| %>
+      <li><%= e %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= render '/userinfo', login_user: @login_user %>
+<%= render '/newbook', newbook: @newbook %>
 
 <% @books.each do |book| %>
 <div>
