@@ -1,9 +1,9 @@
 <div class="layouts">
   <div class="user-info">
     <h1>User info</h1>
-    <%= attachment_image_tag login_user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
-    <p>name : <%= login_user.name %></p>
-    <p>introduction : <%= login_user.introduction %></p>
+    <%= attachment_image_tag info_user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+    <p>name : <%= info_user.name %></p>
+    <p>introduction : <%= info_user.introduction %></p>
     <%= link_to "edit", edit_user_path(current_user.id) %>
   </div>
 </div>

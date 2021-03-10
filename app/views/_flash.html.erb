@@ -1,0 +1,16 @@
+<div class="flash-message">
+  <% if flash[:notice] || flash[:success] %>
+    <% flash.each do |message_type, message| %>
+      <%= message %>
+    <% end %>
+  <% elsif flash[:error] %>
+    <div id="error-explanation">
+      <p><%= pluralize(flash[:error].count, "error") %> prohibited this book from being saved:</p>
+      <ul>
+        <% flash[:error].each do |e| %>
+        <li><%= e %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+</div>

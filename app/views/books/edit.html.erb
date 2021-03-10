@@ -1,13 +1,4 @@
-<div class="message">
-  <% if flash[:error] %>
-  <p><%= pluralize(flash[:error].count, "error") %> prohibited this book from being saved:</p>
-    <ul>
-      <% flash[:error].each do |e| %>
-      <li><%= e %></li>
-      <% end %>
-    </ul>
-  <% end %>
- </div>
+<%= render '/flash' %>
 
 <h1>Editing Book</h1>
 <%= form_with model:@book, local:true do |f| %>
