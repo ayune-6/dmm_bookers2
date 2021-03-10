@@ -1,14 +1,14 @@
-<div class="flash-message">
+<div class="flash-message ">
   <% if flash[:notice] || flash[:success] %>
     <% flash.each do |message_type, message| %>
-      <%= message %>
+      <p style="color: green;"><%= message %></p>
     <% end %>
   <% elsif flash[:error] %>
     <div id="error-explanation">
-      <p><%= pluralize(flash[:error].count, "error") %> prohibited this book from being saved:</p>
-      <ul>
+      <h3 style="color: red;"><%= pluralize(flash[:error].count, "error") %> prohibited this book from being saved:</h3>
+      <ul style="color: red;">
         <% flash[:error].each do |e| %>
-        <li><%= e %></li>
+        <li><p style="color: red;"><%= e %></p></li>
         <% end %>
       </ul>
     </div>
