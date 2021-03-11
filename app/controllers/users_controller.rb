@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :editing_user, only: [:edit]
   def show
     @newbook = Book.new
     # @info_user = User.find(params[:id])
@@ -28,8 +29,15 @@ class UsersController < ApplicationController
   end
 
   private
-  def user_params
-    params.require(:user).permit(:name, :introduction, :profile_image)
-  end
+    def user_params
+      params.require(:user).permit(:name, :introduction, :profile_image)
+    end
+
+    def editing_user
+      user = User.find(params[:id])
+      if current_user != user
+        redirect_to user_path(current_user)
+      end
+    end
 
 end
