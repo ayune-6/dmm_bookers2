@@ -1,37 +1,33 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-3">
-      <h2 class="mb-2 mt-3">User info</h2>
-      <%= attachment_image_tag info_user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
-      <table class="table">
-        <tbody>
-          <tr>
-            <th>name</th>
-            <th><%= info_user.name %></th>
-          </tr>
-          <tr>
-            <th>introduction</th>
-            <th><%= info_user.introduction %></th>
-          </tr>
-        </tbody>
-      </table>
-        <%= link_to edit_user_path(info_user.id) do %>
-          <button class="btn btn-block btn-outline-secondary fas fa-user-cog"></button>
-        <% end %>
-      <h2 class="mt-3">New book</h2>
-      <%= form_with model:newbook, local:true do |f| %>
-      <div class="form-group">
-        <label class="title">Title</label><br>
-        <%= f.text_field :title, class: "form-control title" %>
-      </div>
-      <div class="form-group">
-        <label class="body">Opinion</label><br>
-        <%= f.text_area :body, class: "form-control body" %>
-      </div>
-      <div class="form-group">
-        <%= f.submit "Create Book", class: "btn btn-success" %>
-      </div>
-      <% end %>
-    </div>
+<div class="col-md-3">
+  <h2 class="mb-2 mt-3">User info</h2>
+  <%= attachment_image_tag info_user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+  <table class="table">
+    <tbody>
+      <tr>
+        <th>name</th>
+        <th><%= info_user.name %></th>
+      </tr>
+      <tr>
+        <th>introduction</th>
+        <th><%= info_user.introduction %></th>
+      </tr>
+    </tbody>
+  </table>
+    <%= link_to edit_user_path(info_user.id) do %>
+      <button class="btn btn-block btn-outline-secondary fas fa-user-cog"></button>
+    <% end %>
+  <h2 class="mt-3">New book</h2>
+  <%= form_with model:newbook, local:true do |f| %>
+  <div class="form-group">
+    <label class="title">Title</label><br>
+    <%= f.text_field :title, class: "form-control title" %>
   </div>
+  <div class="form-group">
+    <label class="body">Opinion</label><br>
+    <%= f.text_area :body, class: "form-control body" %>
+  </div>
+  <div class="form-group">
+    <%= f.submit "Create Book", class: "btn btn-success" %>
+  </div>
+  <% end %>
 </div>
